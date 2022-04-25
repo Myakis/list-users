@@ -28,7 +28,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
   },
   devServer: {
-    port: 4200,
+    port: 4000,
     hot: isDev,
   },
   resolve: {
@@ -85,6 +85,7 @@ module.exports = {
         exclude: /node_modules/,
         use: { loader: 'babel-loader', options: babelOptions('@babel/preset-react') },
       },
+
       {
         test: /\.tsx$/,
         exclude: /node_modules/,

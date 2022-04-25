@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
+import MainContainer from './components/MainContainer';
+import Sidebar from './components/Sidebar';
+import { Container } from './components/UI/mainComponents';
 
-const App = () => {
+const App: FC = () => {
   return (
-    <div>
-      <h1 className='container'>Всем fgsggприdgвет</h1>gdgd
-    </div>
+    <Container>
+      <Sidebar />
+      <MainContainer />
+    </Container>
   );
 };
 

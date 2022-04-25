@@ -1,3 +1,37 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,regular,500,700,900);
+@import url('./assets/css/common.scss');
+@import url('./assets/css/preloader.scss');
+body {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+}
 .container {
   text-align: center;
+}
+
+.sort {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+.list-users {
+  margin-top: 1rem;
+  & > div {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.main__title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 0;
+}
+.users-count {
+  margin-top: 10px;
+  text-align: right;
 }
