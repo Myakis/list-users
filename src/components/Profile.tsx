@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { ProfileType } from '../types/componentsType';
 import Form from './Form';
+import FormContainer from './FormContainer';
 import { Box, Button, MainLayout } from './UI/mainComponents';
 
 const Profile: FC<ProfileType> = ({ edit, setEdit }) => {
@@ -12,7 +13,7 @@ const Profile: FC<ProfileType> = ({ edit, setEdit }) => {
           Редактировать
         </Button>
       </Box>
-      <Form disabled={!edit} setEdit={setEdit} />
+      <FormContainer disabled={!edit} setEdit={setEdit} />
     </MainLayout>
   );
 };

@@ -20,3 +20,18 @@ export interface ProfileType {
   edit: boolean;
   setEdit: (edit: boolean) => void;
 }
+export interface FormType {
+  disabled?: boolean;
+  inputValid: boolean;
+  setEdit: (edit: boolean) => void;
+  onSubmit: any;
+  name: any;
+  eMail: any;
+  userName: any;
+  street: any;
+  city: any;
+  zipCode: any;
+  phone: any;
+  webSite: any;
+  comment: any;
+}
