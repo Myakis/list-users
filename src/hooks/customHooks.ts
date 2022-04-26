@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { TypedUseSelectorHook, useDispatch } from 'react-redux';
 
@@ -14,10 +14,11 @@ export interface useInputType {
   isDirty: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (e: React.FocusEventHandler<HTMLInputElement>) => void;
+  valid: ValidityState;
 }
 
 //Хук для полей управляемых компонент
-export const useInput = (InitialValue: string, validations: any) => {
+export const useInput = (InitialValue: string | undefined, validations: any) => {
   const [value, setValue] = useState(InitialValue);
   const [isDirty, setDirty] = useState(false);
   const valid = userValidation(value, validations);

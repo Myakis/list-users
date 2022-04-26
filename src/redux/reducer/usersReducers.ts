@@ -2,9 +2,10 @@ import { ActionsTypes, ThunkType, User } from '../../types/reduxTypes';
 import { userAPI } from '../../api';
 import { sortCities, sortCompany } from '../../Utils/sort';
 
-const initialState = {
+let initialState = {
   users: [] as Array<User>,
   isPending: true,
+  userProfile: null as User | null,
 };
 
 type InitialStateType = typeof initialState;
@@ -16,12 +17,14 @@ const userReducer = (
   switch (action.type) {
     case 'GET_USERS':
       return { ...state, users: action.users };
-    case 'TOOGLE_PENDING':
+    case 'TOGGLE_PENDING':
       return { ...state, isPending: action.isPending };
     case 'SORT_SITIES':
       return { ...state, users: state.users.sort((a, b) => sortCities(a, b)) };
     case 'SORT_COMPANY':
       return { ...state, users: state.users.sort(sortCompany) };
+    case 'GET_PROFILE':
+      return { ...state, userProfile: action.profile };
     default:
       return state;
   }
@@ -35,7 +38,7 @@ export const actions = {
     } as const),
   togglePending: (isPending: boolean) =>
     ({
-      type: 'TOOGLE_PENDING',
+      type: 'TOGGLE_PENDING',
       isPending,
     } as const),
   sortOnCities: () =>
@@ -46,6 +49,11 @@ export const actions = {
     ({
       type: 'SORT_COMPANY',
     } as const),
+  getProfileUser: (profile: User) =>
+    ({
+      type: 'GET_PROFILE',
+      profile,
+    } as const),
 };
 
 export const getUsers = (): ThunkType => async dispatch => {
@@ -55,8 +63,17 @@ export const getUsers = (): ThunkType => async dispatch => {
     dispatch(actions.togglePending(false));
   } catch (e) {
     dispatch(actions.togglePending(false));
-    alert('Ошибка при получении данных');
+    alert('Ошибка при получении данных\nВозможно стоит попробовать через VPN');
   }
 };
+export const getProfile =
+  (id: string): ThunkType =>
+  async dispatch => {
+    try {
+      const profile = await userAPI.getProfileUser(id);
+      const [userData] = profile.data;
+      dispatch(actions.getProfileUser(userData));
+    } catch (e) {}
+  };
 
 export default userReducer;

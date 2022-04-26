@@ -1,4 +1,5 @@
-import React, { FC, Profiler } from 'react';
+import React, { FC } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import MainContainer from './components/MainContainer';
 import ProfileContainer from './components/ProfileContainer';
 import SidebarContainer from './components/SidebarContainer';
@@ -8,8 +9,10 @@ const App: FC = () => {
   return (
     <Container>
       <SidebarContainer />
-      {/* <MainContainer /> */}
-      <ProfileContainer />
+      <Routes>
+        <Route path='/' element={<MainContainer />} />
+        <Route path='/user/:id' element={<ProfileContainer />} />
+      </Routes>
     </Container>
   );
 };

@@ -8,6 +8,7 @@ export interface MainType {
 }
 
 export interface CardUserType {
+  id: number;
   name: string;
   city: string;
   company: string;
@@ -23,7 +24,6 @@ export interface ProfileType {
 export interface FormType {
   disabled?: boolean;
   inputValid: boolean;
-  setEdit: (edit: boolean) => void;
   onSubmit: any;
   name: any;
   eMail: any;

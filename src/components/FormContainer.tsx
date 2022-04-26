@@ -1,21 +1,13 @@
 import React, { FC } from 'react';
-import { useInput } from '../hooks/customHooks';
+import { useAppSelector, useInput } from '../hooks/customHooks';
 import Form from './Form';
 
 interface FormContainerType {
   disabled?: boolean;
   setEdit: (edit: boolean) => void;
 }
-const FormContainer: FC<FormContainerType> = ({ setEdit, disabled }) => {
-  const name = useInput('Leanne Graham', { isEmpty: true });
-  const userName = useInput('Leanne Graham', { isEmpty: true });
-  const eMail = useInput('Sincere@april.biz', { isEmpty: true, isEmail: true });
-  const street = useInput('Kulas Light', { isEmpty: true });
-  const city = useInput('Gwenborough', { isEmpty: true });
-  const zipCode = useInput('92998-3874', { isEmpty: true, minLength: 6 });
-  const phone = useInput('010-692-6593 09125', { isEmpty: true, isPhone: true });
-  const webSite = useInput('anastasia.net', { isEmpty: true, isWebSite: true });
-  const comment = useInput('', {});
+const FormContainer: FC<FormContainerType> = React.memo(({ setEdit, disabled }) => {
+  const userData = useAppSelector(state => state.users.userProfile);
 
   const onSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -34,6 +26,17 @@ const FormContainer: FC<FormContainerType> = ({ setEdit, disabled }) => {
     console.log(dataForm);
   };
 
+  //Валидация и управление input
+  const name = useInput(userData!.name, { isEmpty: true });
+  const userName = useInput(userData!.username, { isEmpty: true });
+  const eMail = useInput(userData!.email, { isEmpty: true, isEmail: true });
+  const street = useInput(userData!.address.street, { isEmpty: true });
+  const city = useInput(userData!.address.city, { isEmpty: true });
+  const zipCode = useInput(userData!.address.zipcode, { isEmpty: true, minLength: 4 });
+  const phone = useInput(userData!.phone, { isEmpty: true, isPhone: true });
+  const webSite = useInput(userData!.website, { isEmpty: true, isWebSite: true });
+  const comment = useInput('', {});
+
   const inputValid =
     name.inputValid &&
     userName.inputValid &&
@@ -46,7 +49,6 @@ const FormContainer: FC<FormContainerType> = ({ setEdit, disabled }) => {
 
   return (
     <Form
-      setEdit={setEdit}
       inputValid={inputValid}
       onSubmit={onSubmit}
       disabled={disabled}
@@ -58,8 +60,9 @@ const FormContainer: FC<FormContainerType> = ({ setEdit, disabled }) => {
       zipCode={zipCode}
       phone={phone}
       webSite={webSite}
-      comment={comment}></Form>
+      comment={comment}
+    />
   );
-};
+});
 
 export default FormContainer;

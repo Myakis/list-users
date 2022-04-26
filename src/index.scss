@@ -53,6 +53,12 @@ body {
     text-align: right;
   }
 }
+button {
+  & > a {
+    color: #4b51ef;
+    text-decoration: none;
+  }
+}
 
 label {
   &:not(:last-child) {

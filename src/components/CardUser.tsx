@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { CardUserType } from '../types/componentsType';
 import { Button, Item, List, UserCard } from './UI/mainComponents';
 
-const CardUser: FC<CardUserType> = ({ name, city, company }) => {
+const CardUser: FC<CardUserType> = ({ name, city, company, id }) => {
   return (
     <UserCard>
       <List>
@@ -17,7 +18,7 @@ const CardUser: FC<CardUserType> = ({ name, city, company }) => {
         </Item>
       </List>
       <Button variant='outline' color='blue'>
-        Подробнее
+        <Link to={`user/${id}`}> Подробнее</Link>
       </Button>
     </UserCard>
   );

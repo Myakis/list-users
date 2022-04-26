@@ -5,7 +5,6 @@ import { Box, Button } from './UI/mainComponents';
 
 const Form: FC<FormType> = ({
   disabled,
-  setEdit,
   onSubmit,
   name,
   userName,

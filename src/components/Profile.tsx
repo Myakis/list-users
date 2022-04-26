@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { ProfileType } from '../types/componentsType';
-import Form from './Form';
 import FormContainer from './FormContainer';
 import { Box, Button, MainLayout } from './UI/mainComponents';
 

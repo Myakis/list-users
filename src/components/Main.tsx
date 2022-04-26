@@ -16,6 +16,7 @@ const Main: FC<MainType> = ({ users, userCount, userNumerals, isPending }) => {
           {users.map(user => (
             <CardUser
               key={user.id}
+              id={user.id}
               name={user.name}
               city={user.address.city}
               company={user.company.name}

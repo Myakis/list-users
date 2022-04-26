@@ -4,7 +4,6 @@ import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../redux/store';
 
 type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never;
-
 export type ActionsTypes<T extends { [key: string]: (...args: any[]) => any }> = ReturnType<
   InferValueTypes<T>
 >;
@@ -16,7 +15,7 @@ interface AddressType {
   street: string;
   suite: string;
   city: string;
-  zipCode: string;
+  zipcode: string;
   geo: {
     lat: string;
     lng: string;
@@ -31,7 +30,7 @@ interface CompanyType {
 export interface User {
   id: number;
   name: string;
-  userName: string;
+  username: string;
   email: string;
   address: AddressType;
   phone: string;

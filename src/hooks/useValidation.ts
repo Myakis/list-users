@@ -42,9 +42,7 @@ export const userValidation = (value: any, validations: any): ValidationType => 
         }
         case 'isPhone': {
           const regEx = /\d+/;
-          const result = regEx.test(value);
           regEx.test(value) ? setPhoneError(false) : setPhoneError(true);
-          console.log(result);
 
           break;
         }
