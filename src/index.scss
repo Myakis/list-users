@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,regular,500,700,900);
 @import url('./assets/css/common.scss');
 @import url('./assets/css/preloader.scss');
+
 body {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
@@ -26,12 +27,39 @@ body {
   }
 }
 
-.main__title {
-  font-weight: 700;
-  font-size: 14px;
-  margin-top: 0;
+.main {
+  &__title {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 .users-count {
   margin-top: 10px;
   text-align: right;
+}
+.form {
+  &__wrapper {
+    border: 1px solid #d8d8d8;
+    border-radius: 5px;
+    padding: 20px 12px;
+  }
+  &__button {
+    margin-top: 10px;
+    text-align: right;
+  }
+}
+
+label {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  & span {
+    font-size: 10px;
+    margin-bottom: 3px;
+  }
 }

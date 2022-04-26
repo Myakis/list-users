@@ -12,3 +12,11 @@ export interface CardUserType {
   city: string;
   company: string;
 }
+export interface SidebarType {
+  sortCities: () => void;
+  sortCompany: () => void;
+}
+export interface ProfileType {
+  edit: boolean;
+  setEdit: (edit: boolean) => void;
+}

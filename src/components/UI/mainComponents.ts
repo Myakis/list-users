@@ -23,19 +23,25 @@ interface ButtonPropsType {
   variant?: string;
   color?: string;
   fontSize?: string;
-  // onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => any;
 }
 export const Button = styled.button<ButtonPropsType>`
-  background: ${({ variant }) => (variant === 'outline' ? 'transparent' : '#4b51ef')};
+  background: ${({ variant }) =>
+    variant === 'outline' ? 'transparent' : variant === 'submit' ? ' #52CF4F' : '#4b51ef'};
   border-radius: 5px;
   color: ${({ color }) => (color === 'blue' ? '#4B51EF' : '#fff')};
   outline: none;
   padding: 5px 15px;
   border: none;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'auto' : 'pointer')};
   text-align: center;
   display: inline-block;
   font-size: ${({ fontSize }) => (fontSize ? fontSize : '12px')};
+
+  &:disabled {
+    background: #afafaf;
+  }
 `;
 
 export const UserCard = styled.div`

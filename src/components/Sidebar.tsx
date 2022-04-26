@@ -1,20 +1,14 @@
 import React, { FC } from 'react';
-import { useAppDispatch } from '../hooks/customHooks';
-import { actions } from '../redux/reducer/usersReducers';
+import { SidebarType } from '../types/componentsType';
 import { Box, Button, SidebarLayout } from './UI/mainComponents';
 
-const Sidebar: FC = () => {
-  const dispatch = useAppDispatch();
-
-  // const sortCities = () => {
-  //   dispatch<any>(actions.sortOnCities());
-  // };
+const Sidebar: FC<SidebarType> = ({ sortCities, sortCompany }) => {
   return (
     <SidebarLayout>
       <h3 className='title'>Сортировка</h3>
       <Box className='sort'>
-        <Button>По городу</Button>
-        <Button>По компании</Button>
+        <Button onClick={sortCities}>По городу</Button>
+        <Button onClick={sortCompany}>По компании</Button>
       </Box>
     </SidebarLayout>
   );

@@ -1,13 +1,15 @@
-import React, { FC } from 'react';
+import React, { FC, Profiler } from 'react';
 import MainContainer from './components/MainContainer';
-import Sidebar from './components/Sidebar';
+import ProfileContainer from './components/ProfileContainer';
+import SidebarContainer from './components/SidebarContainer';
 import { Container } from './components/UI/mainComponents';
 
 const App: FC = () => {
   return (
     <Container>
-      <Sidebar />
-      <MainContainer />
+      <SidebarContainer />
+      {/* <MainContainer /> */}
+      <ProfileContainer />
     </Container>
   );
 };
