@@ -6,9 +6,8 @@ interface FormContainerType {
   disabled?: boolean;
   setEdit: (edit: boolean) => void;
 }
-const FormContainer: FC<FormContainerType> = React.memo(({ setEdit, disabled }) => {
+const FormContainer: FC<FormContainerType> = ({ setEdit, disabled }) => {
   const userData = useAppSelector(state => state.users.userProfile);
-
   const onSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setEdit(false);
@@ -23,6 +22,7 @@ const FormContainer: FC<FormContainerType> = React.memo(({ setEdit, disabled }) 
       webSite: webSite.value,
       comment: comment.value,
     };
+    alert('Данные с формы отправлены в консоль');
     console.log(dataForm);
   };
 
@@ -63,6 +63,6 @@ const FormContainer: FC<FormContainerType> = React.memo(({ setEdit, disabled }) 
       comment={comment}
     />
   );
-});
+};
 
 export default FormContainer;

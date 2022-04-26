@@ -16,11 +16,11 @@ const userReducer = (
 ): InitialStateType => {
   switch (action.type) {
     case 'GET_USERS':
-      return { ...state, users: action.users };
+      return { ...state, users: action.users, userProfile: null };
     case 'TOGGLE_PENDING':
       return { ...state, isPending: action.isPending };
     case 'SORT_SITIES':
-      return { ...state, users: state.users.sort((a, b) => sortCities(a, b)) };
+      return { ...state, users: state.users.sort(sortCities) };
     case 'SORT_COMPANY':
       return { ...state, users: state.users.sort(sortCompany) };
     case 'GET_PROFILE':
@@ -67,10 +67,10 @@ export const getUsers = (): ThunkType => async dispatch => {
   }
 };
 export const getProfile =
-  (id: string): ThunkType =>
+  (name: string): ThunkType =>
   async dispatch => {
     try {
-      const profile = await userAPI.getProfileUser(id);
+      const profile = await userAPI.getProfileUser(name);
       const [userData] = profile.data;
       dispatch(actions.getProfileUser(userData));
     } catch (e) {}

@@ -18,7 +18,7 @@ const CardUser: FC<CardUserType> = ({ name, city, company, id }) => {
         </Item>
       </List>
       <Button variant='outline' color='blue'>
-        <Link to={`user/${id}`}> Подробнее</Link>
+        <Link to={`user/${name}`}> Подробнее</Link>
       </Button>
     </UserCard>
   );

@@ -11,7 +11,7 @@ const App: FC = () => {
       <SidebarContainer />
       <Routes>
         <Route path='/' element={<MainContainer />} />
-        <Route path='/user/:id' element={<ProfileContainer />} />
+        <Route path='/user/:name' element={<ProfileContainer />} />
       </Routes>
     </Container>
   );

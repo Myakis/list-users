@@ -5,12 +5,18 @@ export const Container = styled.div`
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 
 export const SidebarLayout = styled.div`
   background: #bdbdbd;
   flex: 0 0 152px;
   padding: 35px 0 20px 20px;
+  @media (max-width: 768px) {
+    padding: 20px 0 20px 20px;
+  }
 `;
 
 export const MainLayout = styled.div`
